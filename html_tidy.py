@@ -145,15 +145,15 @@ def remove_duplicate_ids(html):
 
 def find_tidier():
     ' Try bundled tidy (if windows), then Tidy in path, then php.'
-    if sublime.platform() == 'windows':
-        try:
-            tidypath = os.path.normpath(pluginpath + '/win/tidy.exe')
-            subprocess.call([tidypath, "-v"])
-            print "HTMLTidy: using Tidy found here: " + tidypath
-            return tidypath, 'list'
-        except OSError:
-            print "HTMLTidy: Didn't find tidy.exe in " + pluginpath
-            pass
+
+    try:
+        tidypath = os.path.normpath(pluginpath + '/win/tidy.exe')
+        subprocess.call([tidypath, "-v"])
+        print "HTMLTidy: using Tidy found here: " + tidypath
+        return tidypath, 'list'
+    except OSError:
+        print "HTMLTidy: Didn't find tidy.exe in " + pluginpath
+        pass
     try:
         subprocess.call(['php', '-v'])
         print "HTMLTidy: Using PHP Tidy module."
