@@ -223,7 +223,7 @@ def fixup(string):
 
 
 def compile_args(args, script, style):
-    'Take a list of tuples and present it as either a list of a string in --opt=arg style'
+    'Take a list of tuples and present it as either a list or a string in --opt=arg style'
     if style == 'string':
         return script + ' ' + ' '.join([a[0] + '=' + a[1] for a in args])
     if style == 'list':
