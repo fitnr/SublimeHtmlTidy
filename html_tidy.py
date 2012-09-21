@@ -188,6 +188,8 @@ def find_tidier(prefer_tidy):
     ''' If user prefers exe or php, try those. Otherwise, user the webservice.'''
 
     if prefer_tidy == 'exe':
+        # Argument format that works for tidy.exe:
+        # command = [scriptpath, scriptpath, '--bare', 'bar', '--clean', 'foo']
         try:
             tidypath = os.path.normpath(pluginpath + '/win/tidy.exe')
             subprocess.call([tidypath, "-v"])
@@ -198,6 +200,13 @@ def find_tidier(prefer_tidy):
             pass
 
     elif prefer_tidy == 'php':
+        # The following both work for PHP on windows:
+        # command = 'php "' + scriptpath + '" --bare=bar --clean=foo'
+        # command = ['php', scriptpath, '--bare=bar', '--clean=foo']
+        # The following do NOT work:
+        # command = ['php', scriptpath, '--bare', 'bar', '--clean', 'foo']
+        # command = ['php', scriptpath, 'bare', 'bar', 'clean', 'foo']
+
         try:
             print "HTMLTidy: Checking PHP Tidy module..."
             if check_php():
