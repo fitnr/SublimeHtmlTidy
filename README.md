@@ -14,6 +14,10 @@ Dedicated to Jeffrey Way @envatowebdev
 ## Usage
 `ctrl + shift + P` and type `Tidy HTML`, or you can set up your own keybinding as shown below.
 
+If you have a selection when you run HTMLTidy, it will only tidy that selection, and won't introduce `<html>` or `<head>` tags.
+
+If you run HTMLTidy without a selection, `<html>` and `<head>` will be added (or tidied, if already present).
+
 ## Customize
 You can customize a growing number of options in HtmlTidy.sublime-settings.
 
