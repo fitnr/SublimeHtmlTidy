@@ -1,9 +1,7 @@
 import sublime
 import sublime_plugin
-
 import re
 import os
-import sys
 import subprocess
 from collections import defaultdict
 
